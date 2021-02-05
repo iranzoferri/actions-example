@@ -119,6 +119,16 @@ Now, go to actions tab on github:
 
 and click on:
 
-![python-application](img/python-application.png)
+![python-application](img/github-python-application.png)
 
+
+Now, you go to check if all steps in a pipeline are successfully completed:
+
+
+If any error occurs, you can troubleshoot them, don't pain and go here:
+![github-build-status](img/github-build-status.png)
+
+and check build status:
+
+![github-build-result](img/github-build-result.png)
 
