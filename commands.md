@@ -1,6 +1,13 @@
-# Command list
+# CI/CD PIPELINE USING GITHUB, LINUX AND PYTHON CODE APP
 
-Create a virtual environment:
+## Instruction set
+
+The first step is create a repository on github:
+https://github.com/new
+
+Next, on your Linux shell environment desktop/laptop/server...
+
+Open terminal and type this to create a virtual environment:
 ```bash
 python3 -m venv myvenv
 source myvenv/bin/activate
@@ -84,6 +91,7 @@ cat <<EOF > .gitignore
 myvenv/
 __pycache__/
 .pytest_cache/
+.DS_Store
 EOF
 ```
 
@@ -102,3 +110,15 @@ Add files where are untracked and commit changes:
 ```bash
 git add -A
 git commit -m "initial commit"
+git push
+```
+
+Now, go to actions tab on github:
+
+![github-actions-button](img/github-actions-button.png)
+
+and click on:
+
+![python-application](img/python-application.png)
+
+
