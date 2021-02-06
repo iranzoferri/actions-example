@@ -191,3 +191,37 @@ heroku create
 ```
 When is created click on the generated link.
 
+Then, crate heroku authorization token:
+```bash
+heroku authorizations:create -d "Test token for github-actions-example"
+# Creating OAuth Authorization... done
+# Client:      <none>
+# ID:          3a80d925-43ce-481c-8319-02208cf041fd
+# Description: Test token for github-actions-example
+# Scope:       global
+# Token:       4b897ef5-e1f4-4b7f-988a-9cccac32b508
+# Updated at:  Sat Feb 06 2021 17:49:19 GMT+0100 (GMT+01:00) (less than a minute ago)
+```
+
+At this point, you need to go back to github to generate two secrets, one for the tokken and one for the application name. The second is optional, but recommended for security reasons. Now go to Settings tab > Secrets:
+![github-secrets-menu](img/github-secrets-menu.png)
+
+and create them
+
+![github-secrets-new](img/github-secrets-new.png)
+
+
+
+Info: https://dashboard.heroku.com/apps/github-delivery-app-example/deploy/heroku-git
+
+On the terminal, get the heroku app name:
+```bash
+heroku apps
+# === iranzoferri@gmail.com Apps
+# github-delivery-app-example (eu) <-- This is app name
+```
+
+Set git remote:
+```bash
+heroku git:remote -a github-delivery-app-example
+```
