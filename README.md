@@ -18,7 +18,7 @@ source myvenv/bin/activate
 
 Install FLASK and pytest:
 ```bash
-pip install flask pytest
+pip install flask pytest gunicorn
 ```
 
 Freeze all package requeriments into a file:
@@ -221,7 +221,32 @@ heroku apps
 # github-delivery-app-example (eu) <-- This is app name
 ```
 
-Set git remote:
+Set existent git repository:
 ```bash
 heroku git:remote -a github-delivery-app-example
 ```
+
+Add to the end of .github/workflows/python-app.yml file
+```yaml
+- name: Deploy to Heroku
+  env:
+    HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+    HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+  if: github.ref == 'refs/heads/master' && job.status == 'success'
+  run: |
+    git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
+    git push heroku HEAD:master -f
+```
+
+touch {Procfile,runtime.txt}
+
+Procfile
+```bash
+web gunicorn --pythonpath src app:app
+```
+
+runtime.txt
+```bash
+python 3.7.8
+```
+
