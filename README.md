@@ -1,6 +1,9 @@
-# CI/CD PIPELINE USING GITHUB ACTIONS, LINUX AND PYTHON CODE APP
+# CI/CD PIPELINE :infinity:
+### USING TERMINAL, PYTHON CODE APP and GITHUB ACTIONS
+
 
 ## Instruction set
+
 
 The first step is create a repository on github:
 https://github.com/new
@@ -186,5 +189,5 @@ Two options here:
 ```bash
 heroku create
 ```
-When is created click on the link.
+When is created click on the generated link.
 
