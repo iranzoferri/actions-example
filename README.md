@@ -1,5 +1,5 @@
 # CI/CD PIPELINE :infinity:
-### USING TERMINAL, PYTHON CODE APP and GITHUB ACTIONS
+### Using TERMINAL, PYTHON CODE APP and GITHUB ACTIONS deployed to HEROKU
 
 
 ## Instruction set
@@ -203,6 +203,11 @@ heroku authorizations:create -d "Test token for github-actions-example"
 # Updated at:  Sat Feb 06 2021 17:49:19 GMT+0100 (GMT+01:00) (less than a minute ago)
 ```
 
+Info: To delete this authorization, simply, use ID:
+```bash
+heroku authorizations:revoke 3a80d925-43ce-481c-8319-02208cf041fd
+```
+
 At this point, you need to go back to github to generate two secrets, one for the tokken and one for the application name. The second is optional, but recommended for security reasons. Now go to Settings tab > Secrets:
 ![github-secrets-menu](img/github-secrets-menu.png)
 
@@ -238,15 +243,29 @@ Add to the end of .github/workflows/python-app.yml file
     git push heroku HEAD:master -f
 ```
 
+Create this two files:
+```bash
 touch {Procfile,runtime.txt}
+```
 
-Procfile
+and put inside the next content...
+
+edit Procfile file:
 ```bash
 web gunicorn --pythonpath src app:app
 ```
 
-runtime.txt
+edit runtime.txt file:
 ```bash
 python 3.7.8
 ```
 
+Ok, next is to check if all be ok. Update all changes to your github repository:
+```bash
+git status
+git add .
+git commit -m "Launch to Heroku Deployment"
+```
+
+To view new app in action follow the provided link:
+https://github-delivery-app-example.herokuapp.com/
