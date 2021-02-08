@@ -258,7 +258,8 @@ web gunicorn --pythonpath src app:app
 
 edit runtime.txt file:
 ```bash
-python 3.9
+python-3.9.0
+# Source: https://devcenter.heroku.com/articles/python-runtimes
 ```
 
 Ok, next is to check if all be ok. Update all changes to your github repository:
