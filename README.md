@@ -209,6 +209,8 @@ Info: To delete this authorization, simply, use ID:
 heroku authorizations:revoke 3a80d925-43ce-481c-8319-02208cf041fd
 ```
 
+### GENERATE SECRETS
+
 At this point, you need to go back to github to generate two secrets, one for the tokken and one for the application name. The second is optional, but recommended for security reasons. Now go to Settings tab > Secrets:
 ![github-secrets-menu](img/github-secrets-menu.png)
 
@@ -224,12 +226,14 @@ On the terminal, get the heroku app name:
 ```bash
 heroku apps
 # === iranzoferri@gmail.com Apps
-# github-delivery-app-example (eu) <-- This is app name
+# github-delivery-app-example (eu) <-- This is app name, without '(eu)'
 ```
 
-Set existent git repository:
+### SETUP DEPLOY ACTION TO HEROKU
+
+(DO NOT DO NEXT STEP, github will do it automatically later) Set existent git repository:
 ```bash
-heroku git:remote -a github-delivery-app-example
+#heroku git:remote -a github-delivery-app-example
 ```
 
 Add to the end of .github/workflows/python-app.yml file
@@ -262,6 +266,9 @@ python-3.9.0
 ```
 Runtime Heroku help: https://devcenter.heroku.com/articles/python-runtimes
 
+
+### COMMIT ALL CHANGES AND SIT DOWN TO ENJOY
+
 Ok, next is to check if all be ok. Update all changes to your github repository:
 ```bash
 git status
@@ -269,5 +276,19 @@ git add .
 git commit -m "Launch to Heroku Deployment"
 ```
 
+- When build is in progress, if you get an error in Heroku Deploy step, like this "Push rejected, ...repo is a shallow clone...", you can fix them looking at this repository: https://github.com/actions/checkout#Fetch-all-history-for-all-tags-and-branches
+
+- Look the fix in action on this commit: [4365c4fd...](https://github.com/iranzoferri/actions-example/commit/4365c4fd7988f38c29a2b43cd302ee565116f4d4)
+
+
+And, this is the result:
+![github-buid](img/github-buid.png)
+
+Now, the application has been deployed to Heroku.
+
 To view new app in action follow the provided link:
 https://github-delivery-app-example.herokuapp.com/
+
+![heroku-app](img/heroku-app.png)
+
+# Success!! See you later.
