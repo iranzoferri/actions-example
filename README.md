@@ -256,11 +256,11 @@ edit Procfile file:
 web gunicorn --pythonpath src app:app
 ```
 
-edit runtime.txt file:
+edit runtime.txt file (WARNING, case sensitive):
 ```bash
 python-3.9.0
-# Source: https://devcenter.heroku.com/articles/python-runtimes
 ```
+Runtime Heroku help: https://devcenter.heroku.com/articles/python-runtimes
 
 Ok, next is to check if all be ok. Update all changes to your github repository:
 ```bash
