@@ -189,6 +189,7 @@ Two options here:
 ```bash
 heroku create
 ```
+Random app name is generated.
 When is created click on the generated link.
 
 Then, crate heroku authorization token:
@@ -237,10 +238,10 @@ Add to the end of .github/workflows/python-app.yml file
   env:
     HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
     HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-  if: github.ref == 'refs/heads/master' && job.status == 'success'
+  if: github.ref == 'refs/heads/main' && job.status == 'success'
   run: |
     git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
-    git push heroku HEAD:master -f
+    git push heroku HEAD:main -f
 ```
 
 Create this two files:
@@ -257,7 +258,7 @@ web gunicorn --pythonpath src app:app
 
 edit runtime.txt file:
 ```bash
-python 3.7.8
+python 3.9
 ```
 
 Ok, next is to check if all be ok. Update all changes to your github repository:
